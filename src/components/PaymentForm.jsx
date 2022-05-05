@@ -1,5 +1,6 @@
 import React from 'react';
 import { useFormik } from 'formik';
+import creditcards from "../assets/creditcards.png";
 
 const states = ["AK", "AL", "AR", "AS", "AZ", 
                 "CA", "CO", "CT", "DC", "DE", 
@@ -54,12 +55,8 @@ const validate = values => {
         errors.zipcode = 'Invalid zip code';
     }
 
-    if (!values.cardFirstName) {
-        errors.cardFirstName = 'Required';
-    }
-  
-    if (!values.cardLastName) {
-        errors.cardLastName = 'Required';
+    if (!values.cardName) {
+        errors.cardName = 'Required';
     }
 
     if (!values.cardNumber) {
@@ -116,8 +113,7 @@ const PaymentForm = ({ item }) => {
           city: '',
           state: 'AK',
           zipcode: '',
-          cardFirstName: '',
-          cardLastName: '',
+          cardName: '',
           cardNumber: '',
           cvc: '',
           expDate: '',
@@ -136,120 +132,127 @@ const PaymentForm = ({ item }) => {
     });
     return(
         <div>
-            <form id="form1" onSubmit={formik.handleSubmit}>
-                <div style={{ fontSize: "16pt", fontWeight: "bolder", color: "#190944", marginTop: "10px" }}>
-                    Shipping Information
-                </div>
-                <div className='form-row'>
-                    <div>
-                        <input style={{ width: "150px" }} className="input-field" placeholder="First Name" id="firstName"  onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.firstName} />
-                        {formik.touched.firstName && formik.errors.firstName ? (<div className="error-message">{formik.errors.firstName}</div>) : null}
-                    </div>
-                    <div>
-                        <input style={{ width: "150px" }} className="input-field" placeholder="Last Name" id="lastName" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.lastName} />
-                        {formik.touched.lastName && formik.errors.lastName ? (<div className="error-message">{formik.errors.lastName}</div>) : null}
-                    </div>
-                </div>
-                <div className='form-row'>
-                    <div>
-                        <input style={{ width: "320px" }} className="input-field" placeholder="Email" id="email" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.email} />
-                        {formik.touched.email && formik.errors.email ? (<div className="error-message">{formik.errors.email}</div>) : null}
-                    </div>
-                    <div>
-                        <input style={{ width: "150px" }} className="input-field" placeholder="Phone Number" id="phoneNumber" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.phoneNumber} />
-                        {formik.touched.phoneNumber && formik.errors.phoneNumber ? (<div className="error-message">{formik.errors.phoneNumber}</div>) : null}
-                    </div>
-                </div>
-                <div className='form-row'>
-                    <div>
-                        <input style={{ width: "320px" }} className="input-field" placeholder="Street Address" id="address" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.address} />
-                        {formik.touched.address && formik.errors.address ? (<div className="error-message">{formik.errors.address}</div>) : null}
-                    </div>
-                </div>
-                <div className='form-row'>
-                    <input style={{ width: "320px" }} className="input-field" placeholder="Apartment, suite, etc." id="apartment" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.apartment} />
-                </div>
-                <div className='form-row'>
-                    <div>
-                        <input style={{ width: "150px" }} className="input-field" placeholder="City" id="city" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.city} />
-                        {formik.touched.city && formik.errors.city ? (<div className="error-message">{formik.errors.city}</div>) : null}
-                    </div>
-                    <div>
-                        <select id="state" className='select-field' onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.state}>
-                            {states.map(state => <option value={state}>{state}</option>)}
-                            {formik.touched.state && formik.errors.state ? (<div className="error-message">{formik.errors.state}</div>) : null}
-                        </select>
-                    </div>
-                    <div>
-                        <input style={{ width: "150px" }} className="input-field" placeholder="Zip Code" id="zipcode" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.zipcode} />
-                        {formik.touched.zipcode && formik.errors.zipcode ? (<div className="error-message">{formik.errors.zipcode}</div>) : null}
-                    </div>
-                </div>
-                <div style={{ fontSize: "16pt", fontWeight: "bolder", color: "#190944", marginTop: "20px" }}>
-                    Payment Information
-                </div>
-                <div className='form-row'>
-                    <div>
-                        <input style={{ width: "150px" }} className="input-field" placeholder="Cardholder First Name" id="cardFirstName"  onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.cardFirstName} />
-                        {formik.touched.cardFirstName && formik.errors.cardFirstName ? (<div className="error-message">{formik.errors.cardFirstName}</div>) : null}
-                    </div>
-                    <div>
-                        <input style={{ width: "150px" }} className="input-field" placeholder="Cardholder Last Name" id="cardLastName" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.cardLastName} />
-                        {formik.touched.cardLastName && formik.errors.cardLastName ? (<div className="error-message">{formik.errors.cardLastName}</div>) : null}
-                    </div>
-                </div>
-                <div className='form-row'>
-                    <div>
-                        <input style={{ width: "150px" }} className="input-field" placeholder="Cardholder Number" id="cardNumber"  onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.cardNumber} />
-                        {formik.touched.cardNumber && formik.errors.cardNumber ? (<div className="error-message">{formik.errors.cardNumber}</div>) : null}
-                    </div>
-                    <div>
-                        <input style={{ width: "50px" }} className="input-field" placeholder="CVC" id="cvc" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.cvc} />
-                        {formik.touched.cvc && formik.errors.cvc ? (<div className="error-message">{formik.errors.cvc}</div>) : null}
-                    </div>
-                    <div>
-                        <input style={{ width: "50px" }} className="input-field" placeholder="MM/YY" id="expDate" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.expDate} />
-                        {formik.touched.expDate && formik.errors.expDate ? (<div className="error-message">{formik.errors.expDate}</div>) : null}
-                    </div>
-                </div>
-                <div className='form-row'>
-                    <input type="checkbox" className='input-checkbox' id="sameAddresses" onChange={formik.handleChange} onBlur={formik.handleBlur} checked={formik.values.sameAddresses} />
-                    Billing Address Same as Mailing Address
-                </div>
-                {!formik.values.sameAddresses ?
+            <form id="form1" onSubmit={formik.handleSubmit} style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
                 <div>
-                    <div style={{ fontSize: "16pt", fontWeight: "bolder", color: "#190944", marginTop: "20px" }}>
-                        Billing Address
+                    <div style={{ fontSize: "16pt", fontWeight: "bolder", color: "#190944", marginTop: "10px" }}>
+                        Shipping Information
                     </div>
                     <div className='form-row'>
                         <div>
-                            <input style={{ width: "320px" }} className="input-field" placeholder="Street Address" id="billingAddress" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.billingAddress} />
-                            {formik.touched.billingAddress && formik.errors.billingAddress ? (<div className="error-message">{formik.errors.billingAddress}</div>) : null}
+                            <input style={{ width: "150px" }} className="input-field" placeholder="First Name" id="firstName"  onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.firstName} />
+                            {formik.touched.firstName && formik.errors.firstName ? (<div className="error-message">{formik.errors.firstName}</div>) : null}
+                        </div>
+                        <div>
+                            <input style={{ width: "150px" }} className="input-field" placeholder="Last Name" id="lastName" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.lastName} />
+                            {formik.touched.lastName && formik.errors.lastName ? (<div className="error-message">{formik.errors.lastName}</div>) : null}
                         </div>
                     </div>
                     <div className='form-row'>
                         <div>
-                            <input style={{ width: "320px" }} className="input-field" placeholder="Apartment, suite, etc." id="billingApartment" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.billingApartment} />
-                            {formik.touched.billingApartment && formik.errors.billingApartment ? (<div className="error-message">{formik.errors.billingApartment}</div>) : null}
+                            <input style={{ width: "320px" }} className="input-field" placeholder="Email" id="email" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.email} />
+                            {formik.touched.email && formik.errors.email ? (<div className="error-message">{formik.errors.email}</div>) : null}
                         </div>
                     </div>
                     <div className='form-row'>
                         <div>
-                            <input style={{ width: "150px" }} className="input-field" placeholder="City" id="billingCity" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.billingCity} />
-                            {formik.touched.billingCity && formik.errors.billingCity ? (<div className="error-message">{formik.errors.billingCity}</div>) : null}
+                            <input style={{ width: "150px" }} className="input-field" placeholder="Phone Number" id="phoneNumber" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.phoneNumber} />
+                            {formik.touched.phoneNumber && formik.errors.phoneNumber ? (<div className="error-message">{formik.errors.phoneNumber}</div>) : null}
+                        </div>
+                    </div>
+                    <div className='form-row'>
+                        <div>
+                            <input style={{ width: "320px" }} className="input-field" placeholder="Street Address" id="address" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.address} />
+                            {formik.touched.address && formik.errors.address ? (<div className="error-message">{formik.errors.address}</div>) : null}
+                        </div>
+                    </div>
+                    <div className='form-row'>
+                        <input style={{ width: "320px" }} className="input-field" placeholder="Apartment, suite, etc." id="apartment" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.apartment} />
+                    </div>
+                    <div className='form-row'>
+                        <div>
+                            <input style={{ width: "150px" }} className="input-field" placeholder="City" id="city" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.city} />
+                            {formik.touched.city && formik.errors.city ? (<div className="error-message">{formik.errors.city}</div>) : null}
                         </div>
                         <div>
-                            <select id="billingState" className='select-field' onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.billingState}>
+                            <select id="state" className='select-field' onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.state}>
                                 {states.map(state => <option value={state}>{state}</option>)}
-                                {formik.touched.billingState && formik.errors.billingState ? (<div className="error-message">{formik.errors.billingState}</div>) : null}
+                                {formik.touched.state && formik.errors.state ? (<div className="error-message">{formik.errors.state}</div>) : null}
                             </select>
                         </div>
                         <div>
-                            <input style={{ width: "150px" }} className="input-field" placeholder="Zip Code" id="billingZipcode" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.billingZipcode} />
-                            {formik.touched.billingZipcode && formik.errors.billingZipcode ? (<div className="error-message">{formik.errors.billingZipcode}</div>) : null}
+                            <input style={{ width: "82px" }} className="input-field" placeholder="Zip Code" id="zipcode" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.zipcode} />
+                            {formik.touched.zipcode && formik.errors.zipcode ? (<div className="error-message">{formik.errors.zipcode}</div>) : null}
                         </div>
                     </div>
-                </div> : null}
+                    <div className='form-row'>
+                        <input type="checkbox" className='input-checkbox' id="sameAddresses" onChange={formik.handleChange} onBlur={formik.handleBlur} checked={formik.values.sameAddresses} />
+                        Billing Address Same as Mailing Address
+                    </div>
+                    {!formik.values.sameAddresses ?
+                    <div>
+                        <div style={{ fontSize: "16pt", fontWeight: "bolder", color: "#190944", marginTop: "20px" }}>
+                            Billing Address
+                        </div>
+                        <div className='form-row'>
+                            <div>
+                                <input style={{ width: "320px" }} className="input-field" placeholder="Street Address" id="billingAddress" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.billingAddress} />
+                                {formik.touched.billingAddress && formik.errors.billingAddress ? (<div className="error-message">{formik.errors.billingAddress}</div>) : null}
+                            </div>
+                        </div>
+                        <div className='form-row'>
+                            <div>
+                                <input style={{ width: "320px" }} className="input-field" placeholder="Apartment, suite, etc." id="billingApartment" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.billingApartment} />
+                                {formik.touched.billingApartment && formik.errors.billingApartment ? (<div className="error-message">{formik.errors.billingApartment}</div>) : null}
+                            </div>
+                        </div>
+                        <div className='form-row'>
+                            <div>
+                                <input style={{ width: "150px" }} className="input-field" placeholder="City" id="billingCity" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.billingCity} />
+                                {formik.touched.billingCity && formik.errors.billingCity ? (<div className="error-message">{formik.errors.billingCity}</div>) : null}
+                            </div>
+                            <div>
+                                <select id="billingState" className='select-field' onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.billingState}>
+                                    {states.map(state => <option value={state}>{state}</option>)}
+                                    {formik.touched.billingState && formik.errors.billingState ? (<div className="error-message">{formik.errors.billingState}</div>) : null}
+                                </select>
+                            </div>
+                            <div>
+                                <input style={{ width: "82px" }} className="input-field" placeholder="Zip Code" id="billingZipcode" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.billingZipcode} />
+                                {formik.touched.billingZipcode && formik.errors.billingZipcode ? (<div className="error-message">{formik.errors.billingZipcode}</div>) : null}
+                            </div>
+                        </div>
+                    </div> : null}
+                </div>
+                <div style={{ marginLeft: "10px" }}>
+                    <div style={{ display: "flex", flexDirection: "row" }}>
+                        <div style={{ fontSize: "16pt", fontWeight: "bolder", color: "#190944", marginTop: "10px" }}>
+                            Payment Information
+                        </div>
+                        <div style={{ display: "flex", marginTop: "20px", marginLeft: "10px" }}>
+                            <img src={creditcards} alt="Credit Cards" height={10} />
+                        </div>
+                    </div>
+                    <div className='form-row'>
+                        <div>
+                            <input style={{ width: "320px" }} className="input-field" placeholder="Full Name as it Appears on Card" id="cardName"  onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.cardName} />
+                            {formik.touched.cardName && formik.errors.cardName ? (<div className="error-message">{formik.errors.cardName}</div>) : null}
+                        </div>
+                    </div>
+                    <div className='form-row'>
+                        <div>
+                            <input style={{ width: "175px" }} className="input-field" placeholder="Card Number" id="cardNumber"  onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.cardNumber} />
+                            {formik.touched.cardNumber && formik.errors.cardNumber ? (<div className="error-message">{formik.errors.cardNumber}</div>) : null}
+                        </div>
+                        <div>
+                            <input style={{ width: "50px" }} className="input-field" placeholder="CVC" id="cvc" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.cvc} />
+                            {formik.touched.cvc && formik.errors.cvc ? (<div className="error-message">{formik.errors.cvc}</div>) : null}
+                        </div>
+                        <div>
+                            <input style={{ width: "50px" }} className="input-field" placeholder="MM/YY" id="expDate" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.expDate} />
+                            {formik.touched.expDate && formik.errors.expDate ? (<div className="error-message">{formik.errors.expDate}</div>) : null}
+                        </div>
+                    </div>
+                </div>
             </form>
         </div>
     )

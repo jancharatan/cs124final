@@ -42,9 +42,8 @@ const ItemPage = ({ name }) => {
             <div style={{ display: "flex", flexDirection: "row", marginLeft: "40px", marginTop: "20px", marginRight: "40px" }}>
                 <div style={{ display: "flex", flexDirection: "column" }}>
                     <img src={storeItems[name].path} alt={name} width={280} />
-                    <img src={storeItems[name].altPath} alt={name} width={280} />
                 </div>
-                <div style={{ backgroundColor: "lightgrey", width: "100%", marginLeft: "20px", padding: "20px", borderRadius: "10px" }}>
+                <div style={{ backgroundColor: "lightgrey", width: "100%", height: "100%", marginLeft: "20px", padding: "20px", borderRadius: "10px" }}>
                     <div style={{ fontSize: "24pt", fontWeight: "bolder" }}>
                         {name}
                     </div>

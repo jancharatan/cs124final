@@ -121,19 +121,19 @@
   border-radius: 10px;
 }
 
-.yellow-button {
-  background: linear-gradient(0deg, rgba(255,227,83,1) 0%, rgba(207, 186, 81,1) 100%); 
-  color: black;
+.pay-button {
+  background: linear-gradient(180deg, rgba(234,47,93,1) 0%, rgba(154,33,63,1) 100%); 
+  color: white;
   font-size: 16pt;
   font-weight: bold;
   height: 60px;
   width: 100%;
   border-radius: 10px;
   border: 0px;
-  margin: 5px;
+  margin-top: 10px;
 }
 
-.yellow-button:hover {
+.pay-button:hover {
   cursor: pointer;
 }
 

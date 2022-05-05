@@ -8,7 +8,7 @@ const CategoryPicker = () => {
     const dispatch = useDispatch();
 
     return (
-        <div style={{ marginTop: "20px", padding: "25px", borderRadius: "15px", backgroundColor: "lightgrey" }}>
+        <div style={{ marginTop: "20px", padding: "25px", borderRadius: "15px", backgroundColor: "lightgrey", height: "100%" }}>
             <div style={{ fontWeight: "bolder", color: "#190944" }}>
                 What are you looking for?
             </div>

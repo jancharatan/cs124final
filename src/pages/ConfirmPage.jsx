@@ -56,7 +56,7 @@ const ConfirmPage = () => {
                                 </div>
                             </div>
                             <div style={{ marginTop: "5px", fontSize: "8pt", color: "#190944" }}>
-                                until {new Date(date.setMonth(date.getMonth()+getMonths(item.options["Rental Period"]))).toDateString()}
+                                Return by {new Date(date.setMonth(date.getMonth()+getMonths(item.options["Rental Period"]))).toDateString()}
                             </div>
                         </div>
                     </div>
@@ -69,13 +69,16 @@ const ConfirmPage = () => {
                         Order number: {orderNo}
                     </div>
                     <div style={{ fontSize: "16pt", color: "#190944" }}>
-                        Date: {new Date().toDateString()}
+                        Return Date: {new Date(date.setMonth(date.getMonth()+getMonths(item.options["Rental Period"]))).toDateString()}
                     </div>
                     <div style={{ fontSize: "14pt", color: "#190944", marginTop: "20px", textAlign: "center" }}>
                         Thank you for shopping with circular. A summary of your purchase can be found on the left. Again, your confirmation number is {orderNo}.
                     </div>
                     <div style={{ fontSize: "14pt", color: "#190944", marginTop: "20px", textAlign: "center" }}>
                         Please allow up to 5 business days for us to process and ship your order. You will receive an email with a receipt of this order and you will also recceive an email when your order has shipped. You do not need to do anything else at this time!
+                    </div>
+                    <div style={{ fontSize: "14pt", color: "#190944", marginTop: "20px", textAlign: "center" }}>
+                        Any other questions about the process? Check our <a href="/#/faq">FAQ</a>.
                     </div>
                 </div>
             </div>

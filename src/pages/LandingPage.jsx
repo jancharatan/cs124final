@@ -8,13 +8,13 @@ const LandingPage = () => (
         <Navbar />
         <div style={{ backgroundImage: `url(${background})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat', width: '100vw', height: '100vh' }}>
             <div className="welcome-block">
-                <h1 className="welcome-message" style={{ fontSize: "32pt", color: "white" }}>
+                <h1 className="welcome-message" style={{ fontSize: "32pt", color: "white", fontWeight: "bolder", marginBottom: "0px" }}>
                     Technology, on demand.
                 </h1>
-                <h3 style={{ marginTop: "0px", color: "white", textAlign: "center", fontSize: "16pt" }}>
-                    We have hundreds of gadgets to choose from. <br />
-                    Pay for using, not owning. <br />
-                    Then upgrade whenever you want.
+                <h3 style={{ marginTop: "10px", color: "white", textAlign: "center", fontSize: "16pt" }}>
+                    Hundreds of gadgets to choose from. <br />
+                    Pay only for using, not owning. <br />
+                    Upgrade when you want.
                 </h3>
                 <button className="emphasis-button" onClick={(e) => {e.preventDefault(); window.location.href='/#/store';}}>
                     Rent Now!

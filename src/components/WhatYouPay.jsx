@@ -17,12 +17,12 @@ const WhatYouPay = ({ address, item, isForm }) => {
     const date = new Date();
     console.log(item);
     return (
-    <div style={{ width: "25%", marginLeft: "20px" }}>
+    <div style={{ width: "40%", marginLeft: "20px" }}>
         <div style={{ fontSize: "24pt", fontWeight: "bolder", color: "#190944" }}>
             What You Pay
         </div>
         <div style={{ marginTop: "10px" }}>
-            <div style={{ display: "flex", width: "210px", height: "30px", backgroundColor: "lightgrey", alignItems: "center", justifyContent: "center", borderRadius: "10px" }}>
+            <div style={{ display: "flex", width: "210px", height: "30px", backgroundColor: "lightgrey", alignItems: "center", justifyContent: "center", borderRadius: "10px", fontWeight: "bolder" }}>
                 Subscriptions
             </div>
             <div style={{ display: "flex", marginTop: "10px", flexDirection: "row", justifyContent: "space-between" }}>
@@ -41,7 +41,7 @@ const WhatYouPay = ({ address, item, isForm }) => {
             </div>
         </div>
         <div style={{ marginTop: "10px" }}>
-            <div style={{ display: "flex", width: "210px", height: "30px", backgroundColor: "lightgrey", alignItems: "center", justifyContent: "center", borderRadius: "10px" }}>
+            <div style={{ display: "flex", width: "210px", height: "30px", backgroundColor: "lightgrey", alignItems: "center", justifyContent: "center", borderRadius: "10px", fontWeight: "bolder" }}>
                 Shipping and Handling
             </div>
             <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", marginTop: "10px" }}>
@@ -72,11 +72,11 @@ const WhatYouPay = ({ address, item, isForm }) => {
             </div>
         </div>
         <div style={{ marginTop: "5px", fontSize: "8pt" }}>
-            until {new Date(date.setMonth(date.getMonth()+getMonths(item.options["Rental Period"]))).toDateString()}
+            Return by {new Date(date.setMonth(date.getMonth()+getMonths(item.options["Rental Period"]))).toDateString()}
         </div>
-        { isForm ? <button form="form1" type="submit" className="yellow-button" style={{ marginTop: "10px" }}>
+        { isForm ? <button form="form1" type="submit" className="pay-button">
             Pay Now
-        </button> : <button className="yellow-button" style={{ marginTop: "10px" }} onClick={(e) => {e.preventDefault(); window.location.href=address}}>
+        </button> : <button className="pay-button" onClick={(e) => {e.preventDefault(); window.location.href=address}}>
             Pay Now
         </button>}
         
